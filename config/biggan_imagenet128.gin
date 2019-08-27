@@ -13,6 +13,7 @@ standardize_batch.use_moving_averages = False
 # Network Settings
 Network.conditional = True
 Network.g_use_ma = True
+Network.p_lambda = 1
 loss.fn = @hinge
 penalty.fn = @no_penalty
 Network.g_lr = 0.0001

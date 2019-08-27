@@ -31,6 +31,7 @@ class Network(abstract_network.AbstractNetwork):
                  d_op_fn=None,
                  g_lr=0.0002,
                  d_lr=None,
+                 p_lambda=1,
                  conditional=False):
         """
         BigGanDeep models. Handle with building graph, building loss, saving network, eval network,
@@ -47,6 +48,7 @@ class Network(abstract_network.AbstractNetwork):
         If None will call `g_optimizer_fn`.
         :param g_lr: Learning rate for G.
         :param d_lr: Learning rate for D. Defaults to `g_lr`.
+        :param p_lambda:
         :param conditional: Whether the GAN is conditional. If True both G and Y will
         get passed labels.
         """
@@ -62,6 +64,7 @@ class Network(abstract_network.AbstractNetwork):
             raise ValueError("Option 'conditional' selected but dataset {} does not have "
           "labels".format(self._dataset.name))
         self._conditional = conditional
+        self._lambda = p_lambda
 
         # Parameters that have not been ported to Gin.
         self._z_dim = z_dim
