@@ -44,7 +44,8 @@ def training_loop(config: Config):
 
     saver = tf.train.Saver()
     print('Start training...\n')
-    sess_config = tf.ConfigProto(allow_soft_placement = True)
+    sess_config = tf.ConfigProto(allow_soft_placement=True,
+                                 log_device_placement=True)
     with tf.Session(sess_config) as sess:
         sess.run(tf.global_variables_initializer())
         sess.run([data_iter.initializer, eval_iter.initializer])
