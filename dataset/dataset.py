@@ -14,7 +14,7 @@ import tensorflow_datasets as tfds
 
 
 # Number of examples for the shuffle buffer.
-DATA_SHUFFLE_BUFFER_SIZE = 500
+DATA_SHUFFLE_BUFFER_SIZE = 10
 
 
 class ImageDataset(object):

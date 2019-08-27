@@ -34,12 +34,13 @@ def training_loop(config: Config):
                 g_grad_pool.append(g_op.compute_gradients(g_loss, Network.generator.trainable_variables))
             with tf.control_dependencies([d_loss]):
                 d_grad_pool.append(d_op.compute_gradients(d_loss, Network.discriminator.trainable_variables))
-    g_update_op = Network.update(g_grad_pool, g_op)
-    d_update_op = Network.update(d_grad_pool, d_op)
-    g_ma_op = Network.ma_op(global_step=global_step)
-    merge_op = Network.summary()
-    f_eval, l_eval = eval_iter.get_next()
-    [inception_score, fid] = Network.eval(f_eval, l_eval)
+    with tf.device('/cpu:0'):
+        g_update_op = Network.update(g_grad_pool, g_op)
+        d_update_op = Network.update(d_grad_pool, d_op)
+        g_ma_op = Network.ma_op(global_step=global_step)
+        merge_op = Network.summary()
+        f_eval, l_eval = eval_iter.get_next()
+        [inception_score, fid] = Network.eval(f_eval, l_eval)
 
     saver = tf.train.Saver()
     print('Start training...\n')
