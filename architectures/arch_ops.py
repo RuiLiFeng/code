@@ -175,7 +175,7 @@ def _accumulated_moments_for_inference(mean, variance, is_training):
       return accu_mean / accu_counter, accu_variance / accu_counter
 
 
-@gin.configurable(whitelist=["decay", "epsilon", "use_cross_replica_mean",
+@gin.configurable(whitelist=["decay", "epsilon",
                              "use_moving_averages"])
 def standardize_batch(inputs,
                       is_training,
