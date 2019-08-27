@@ -24,7 +24,7 @@ def training_loop(config: Config):
     g_grad_pool = []
     d_grad_pool = []
     for gpu in range(config.gpu_nums):
-        with tf.name_scope("GPU%d", gpu), tf.device('/gpu:%d', gpu):
+        with tf.name_scope("GPU%d" % gpu), tf.device('/gpu:%d' % gpu):
             fs, ls = data_iter.get_next()
             fs, ls = Network.generate_samples(fs, ls)
             g_loss, d_loss = Network.create_loss(fs, ls)
