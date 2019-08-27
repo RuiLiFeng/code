@@ -46,8 +46,7 @@ def training_loop(config: Config):
     print('Start training...\n')
 
     with tf.Session(config=tf.ConfigProto(
-            allow_soft_placement=True,
-            log_device_placement=True)) as sess:
+            allow_soft_placement=True)) as sess:
         sess.run(tf.global_variables_initializer())
         sess.run([data_iter.initializer, eval_iter.initializer])
         summary_writer = tf.summary.FileWriter(logdir=config.model_dir, graph=sess.graph)
