@@ -38,7 +38,7 @@ class Config(object):
                  eval_per_steps=2500,
                  save_per_steps=10000,
                  seed=547,
-                 gpu_nums=4
+                 gpu_nums=8
                  ):
         self.task_name = task_name
         self.batch_size = batch_size
