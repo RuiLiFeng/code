@@ -11,7 +11,6 @@ class AbstractNetwork(object):
         self._dataset = dataset
         self._parameters = parameters
         self._model_dir = model_dir
-        self._num_gpus = num_gpus
 
     def input_fn(self, params, mode):
         """Input function that returns a 'tf.data.Dataset' object."""

@@ -17,14 +17,13 @@ from network import loss_lib, penalty_lib
 FLAGS = flags.FLAGS
 
 
-@gin.configurable(blacklist=["dataset", "parameters", "model_dir"])
+@gin.configurable(blacklist=["dataset", "model_dir"])
 class Network(abstract_network.AbstractNetwork):
     def __init__(self,
                  dataset,
                  model_dir,
                  z_dim=128,
-                 disc_iters=1,
-                 num_gpus=4,
+                 disc_iters=2,
                  g_use_ma=False,
                  ma_decay=0.9999,
                  ma_start_step=40000,
@@ -39,7 +38,6 @@ class Network(abstract_network.AbstractNetwork):
         :param dataset: `ImageDataset` object. If `conditional` the dataset must provide
         labels and the number of classes bust known.
         :param model_dir: Directory path for storing summary files.
-        :param num_gpus: Number of GPUs used.
         :param g_use_ma: If True keep moving averages for weights in G.
         :param ma_decay: Decay rate for moving averages for G's weights.
         :param ma_start_step: Start step for keeping moving averages. Before this the
@@ -52,7 +50,7 @@ class Network(abstract_network.AbstractNetwork):
         :param conditional: Whether the GAN is conditional. If True both G and Y will
         get passed labels.
         """
-        super(Network, self).__init__(dataset=dataset, parameters=None, model_dir=model_dir, num_gpus=num_gpus)
+        super(Network, self).__init__(dataset=dataset, parameters=None, model_dir=model_dir)
         self._g_use_ma = g_use_ma
         self._ma_decay = ma_decay
         self._ma_start_step = ma_start_step
@@ -134,23 +132,12 @@ class Network(abstract_network.AbstractNetwork):
             features["sampled_labels"] = labels
         return features, labels
 
-    def input_fn(self, params, mode):
-        """Input function that retuns a `tf.data.Dataset` object.
-
-        This function will be called once for each host machine.
-
-        Args:
-          params: Python dictionary with parameters.
-          params: mode in "train, eval, test".
-
-        Returns:
-          A `tf.data.Dataset` object with batched features and labels.
-        """
-        return self._dataset.input_fn(params=params, mode=mode,
+    def input_fn(self, batch_size, seed=None, mode="train"):
+        return self._dataset.input_fn(batch_size=batch_size, seed=seed, mode=mode,
                                       preprocess_fn=self._preprocess_fn)
 
-    def input_data_as_iter(self, params, mode):
-        dataset = self.input_fn(params, mode)
+    def input_data_as_iter(self, **kwargs):
+        dataset = self.input_fn(**kwargs)
         return tf.compat.v1.data.make_initializable_iterator(dataset)
 
     def generate_samples(self, features, labels, is_training=True):

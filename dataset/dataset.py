@@ -5,7 +5,6 @@ from __future__ import print_function
 import functools
 import inspect
 
-from absl import flags
 from absl import logging
 
 import gin
@@ -13,18 +12,9 @@ import gin
 import tensorflow as tf
 import tensorflow_datasets as tfds
 
-FLAGS = flags.FLAGS
 
-flags.DEFINE_string(
-    "tfds_data_dir", None,
-    "TFDS (TensorFlow Datasets) directory. If not set it will default to "
-    "'~/tensorflow_datasets'. If the directory does not contain the requested "
-    "dataset TFDS will download the dataset to this folder.")
-
-
-flags.DEFINE_integer(
-    "data_shuffle_buffer_size", 10000,
-    "Number of examples for the shuffle buffer.")
+# Number of examples for the shuffle buffer.
+DATA_SHUFFLE_BUFFER_SIZE = 10000
 
 
 class ImageDataset(object):
@@ -35,7 +25,8 @@ class ImageDataset(object):
                  colors,
                  num_classes,
                  eval_test_samples,
-                 seed):
+                 seed,
+                 data_dir):
         logging.info("ImageDatasetV2(name=%s, tfds_name=%s, resolution=%d, "
                      "colors=%d, num_classes=%s, eval_test_samples=%s, seed=%s)",
                      name, tfds_name, resolution, colors, num_classes,
@@ -47,6 +38,7 @@ class ImageDataset(object):
         self._num_classes = num_classes
         self._eval_test_sample = eval_test_samples
         self._seed = seed
+        self._data_dir = data_dir
 
         self._train_split = tfds.Split.TRAIN
         self._eval_split = tfds.Split.TEST
@@ -63,8 +55,6 @@ class ImageDataset(object):
     @property
     def eval_test_samples(self):
         """Number of examples in the "test" split of this dataset."""
-        if FLAGS.data_fake_dataset:
-            return 100
         return self._eval_test_sample
 
     @property
@@ -80,7 +70,7 @@ class ImageDataset(object):
         ds = tfds.load(
             self._tfds_name,
             split=split,
-            data_dir=FLAGS.tfds_data_dir,
+            data_dir=self._data_dir,
             as_dataset_kwargs={"shuffle_files": False}
         )
         ds = ds.map(self._parse_fn)
@@ -98,52 +88,48 @@ class ImageDataset(object):
         del seed
         return image, label
 
-    def train_input_fn(self, params, preprocess_fn=None):
+    def train_input_fn(self, batch_size, seed=None, preprocess_fn=None):
         """
         Input function for reading data.
         :param preprocess_fn:
+        :param batch_size
+        :param seed
         :return: 'tf.data.Dataset' with preprocessed and batched examples.
         """
-        assert isinstance(params, dict)
-        if "batch_size" not in params:
-            raise (ValueError("batch_size must be key of params"))
-        if "seed" not in params:
-            raise (ValueError("seed must be key of params"))
-        logging.info("train_input_fn(): params=%s", params)
+        if seed is None:
+            seed = self._seed
+        logging.info("train_input_fn(): params=%s", {"batch_size": batch_size, "seed": seed})
         ds = self._load_dataset(split=self._train_split)
         ds = ds.filter(self._train_filter_fn)  # Filter this dataset according to predicate.
         ds = ds.repeat()
-        ds = ds.map(functools.partial(self._train_transform_fn, seed=params["seed"]))
+        ds = ds.map(functools.partial(self._train_transform_fn, seed=seed))
         if preprocess_fn is not None:
             if "seed" in inspect.getargspec(preprocess_fn).args:
-                preprocess_fn = functools.partial(preprocess_fn, seed=params["seed"])
+                preprocess_fn = functools.partial(preprocess_fn, seed=seed)
             ds = ds.map(preprocess_fn)
-        ds = ds.shuffle(FLAGS.data_shuffle_buffer_size, seed=params["seed"])
-        ds = ds.batch(params["batch_size"], drop_remainder=True)
+        ds = ds.shuffle(DATA_SHUFFLE_BUFFER_SIZE, seed=seed)
+        ds = ds.batch(batch_size, drop_remainder=True)
         return ds.prefetch(tf.contrib.data.AUTOTUNE)
 
-    def eval_input_fn(self, params, split=None):
-        assert isinstance(params, dict)
-        if "batch_size" not in params:
-            raise (ValueError("batch_size must be key of params"))
-        if "seed" not in params:
-            raise (ValueError("seed must be key of params"))
-        logging.info("eval_input_fn(): params=%s", params)
+    def eval_input_fn(self, batch_size, seed=None, split=None):
+        if seed is None:
+            seed = self._seed
+        logging.info("eval_input_fn(): params=%s", {"batch_size":batch_size, "seed":seed})
         if split is None:
             split = self._eval_split
         ds = self._load_dataset(split=split)
-        # No filter, no rpeat.
-        ds = ds.map(functools.partial(self._eval_transform_fn, seed=params["seed"]))
+        # No filter, no repeat.
+        ds = ds.map(functools.partial(self._eval_transform_fn, seed=seed))
         # No shuffle.
-        ds = ds.batch(params["batch_size"], drop_remainder=True)
+        ds = ds.batch(batch_size, drop_remainder=True)
         return ds.prefetch(tf.contrib.data.AUTOTUNE)
 
-    def input_fn(self, params, mode="train", preprocess_fn=None):
+    def input_fn(self, batch_size, seed=None, mode="train", preprocess_fn=None):
         assert isinstance(mode, str)
         if mode not in ["train", "eval"]:
             raise ValueError("Unsupported input mode")
-        return self.train_input_fn(params=params, preprocess_fn=preprocess_fn) \
-            if mode == "train" else self.eval_input_fn(params=params)
+        return self.train_input_fn(batch_size, seed, preprocess_fn=preprocess_fn) \
+            if mode == "train" else self.eval_input_fn(batch_size, seed)
 
     
 def _transform_imagnet_image(image, target_image_shape, crop_method, seed):
@@ -217,7 +203,7 @@ def _eval_imagenet_transform(image, target_image_shape, seed,
 
 
 class ImagenetDataset(ImageDataset):
-    def __init__(self, resolution, seed, filter_unlabeled=False):
+    def __init__(self, resolution, seed, data_dir=None, filter_unlabeled=False):
         if resolution not in [64, 128, 256, 512]:
             raise ValueError("Unsupported resolution: {}".format(resolution))
         super(ImagenetDataset, self).__init__(
@@ -227,7 +213,8 @@ class ImagenetDataset(ImageDataset):
             colors=3,
             num_classes=1000,
             eval_test_samples=50000,
-            seed=seed)
+            seed=seed,
+            data_dir=data_dir)
         self._eval_split = tfds.Split.VALIDATION
         self._filter_unlabeled = filter_unlabeled
 
@@ -260,8 +247,8 @@ DATASETS = {
 
 
 @gin.configurable("dataset")
-def get_dataset(name, seed=547):
+def get_dataset(name, data_dir, seed=547):
   """Instantiates a data set and sets the random seed."""
   if name not in DATASETS:
     raise ValueError("Dataset %s is not available." % name)
-  return DATASETS[name](seed=seed)
+  return DATASETS[name](seed=seed, data_dir=data_dir)
