@@ -254,6 +254,7 @@ class Network(abstract_network.AbstractNetwork):
         Eval results use metric FID and IS
         :return:
         """
+        f_eval, l_eval = self._preprocess_fn(f_eval, l_eval)
         fs, ls = self.generate_samples(f_eval, l_eval, is_training=False)
         images = fs["images"]  # Real images.
         generated = fs["generated"]  # Fake images.
