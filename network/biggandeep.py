@@ -229,6 +229,9 @@ class Network(abstract_network.AbstractNetwork):
             v = grad_and_vars[0][1]
             grad_and_var = (grad, v)
             average_grads.append(grad_and_var)
+        for grad, var in average_grads:
+            tf.summary.histogram(var.name, var)
+            tf.summary.histogram(var.name + '_average_gradient', grad)
         return op.apply_gradients(average_grads)
 
     def ma_op(self, global_step=0):
@@ -244,12 +247,6 @@ class Network(abstract_network.AbstractNetwork):
     def summary(self):
         tf.summary.scalar("g_loss", self.g_loss)
         tf.summary.scalar("d_loss", self.d_loss)
-        for grad, var in self.generator.trainable_variables:
-            tf.summary.histogram(var.name, var)
-            tf.summary.histogram(var.name + '_gradient', grad)
-        for grad, var in self.discriminator.trainable_variables:
-            tf.summary.histogram(var.name, var)
-            tf.summary.histogram(var.name + '_gradient', grad)
         return tf.summary.merge_all()
 
     def eval(self, f_eval, l_eval):
