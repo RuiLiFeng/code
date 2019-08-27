@@ -134,7 +134,7 @@ class ImageDataset(object):
         if mode not in ["train", "eval"]:
             raise ValueError("Unsupported input mode")
         return self.train_input_fn(batch_size, seed, preprocess_fn=preprocess_fn) \
-            if mode == "train" else self.eval_input_fn(batch_size, seed)
+            if mode == "train" else self.eval_input_fn(batch_size, seed, preprocess_fn=preprocess_fn)
 
     
 def _transform_imagnet_image(image, target_image_shape, crop_method, seed):
