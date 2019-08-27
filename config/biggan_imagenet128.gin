@@ -15,10 +15,10 @@ Network.conditional = True
 Network.g_use_ma = True
 loss.fn = @hinge
 penalty.fn = @no_penalty
-ModularGAN.g_lr = 0.0001
-ModularGAN.g_optimizer_fn = @tf.train.AdamOptimizer
-ModularGAN.d_lr = 0.0005
-ModularGAN.d_optimizer_fn = @tf.train.AdamOptimizer
+Network.g_lr = 0.0001
+Network.g_op_fn = @tf.train.AdamOptimizer
+Network.d_lr = 0.0005
+Network.d_op_fn = @tf.train.AdamOptimizer
 tf.train.AdamOptimizer.beta1 = 0.0
 tf.train.AdamOptimizer.beta2 = 0.999
 
