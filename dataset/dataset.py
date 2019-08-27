@@ -111,7 +111,8 @@ class ImageDataset(object):
         ds = ds.batch(batch_size, drop_remainder=True)
         return ds.prefetch(tf.contrib.data.AUTOTUNE)
 
-    def eval_input_fn(self, batch_size, seed=None, split=None):
+    def eval_input_fn(self, batch_size, seed=None,
+                      preprocess_fn=None, split=None):
         if seed is None:
             seed = self._seed
         logging.info("eval_input_fn(): params=%s", {"batch_size":batch_size, "seed":seed})
@@ -120,6 +121,10 @@ class ImageDataset(object):
         ds = self._load_dataset(split=split)
         # No filter, no repeat.
         ds = ds.map(functools.partial(self._eval_transform_fn, seed=seed))
+        if preprocess_fn is not None:
+            if "seed" in inspect.getargspec(preprocess_fn).args:
+                preprocess_fn = functools.partial(preprocess_fn, seed=seed)
+            ds = ds.map(preprocess_fn)
         # No shuffle.
         ds = ds.batch(batch_size, drop_remainder=True)
         return ds.prefetch(tf.contrib.data.AUTOTUNE)
