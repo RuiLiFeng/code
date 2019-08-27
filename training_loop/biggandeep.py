@@ -15,7 +15,7 @@ def training_loop(config: Config):
     with tf.device('/cpu:0'):
         print("Constructing networks...")
         Network = biggandeep.Network(dataset=dataset, model_dir=config.model_dir)
-        data_iter = Network.input_data_as_iter(batch_size=config.batch_size, seed=config.seed, mode="train")
+        data_iter = Network.input_data_as_iter(batch_size=config.batch_size / config.gpu_nums, seed=config.seed, mode="train")
         eval_iter = Network.input_data_as_iter(batch_size=config.batch_size, seed=config.seed, mode="eval")
         global_step = tf.get_variable(
             'global_step', [],
