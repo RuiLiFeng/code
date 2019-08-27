@@ -15,8 +15,7 @@ Network.conditional = True
 Network.g_use_ma = True
 Network.g_lr = 0.0001
 Network.d_lr = 0.0005
-tf.train.AdamOptimizer.beta1 = 0.0
-tf.train.AdamOptimizer.beta2 = 0.999
+
 
 z.distribution_fn = @tf.random.normal
 
