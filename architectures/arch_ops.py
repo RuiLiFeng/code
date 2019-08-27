@@ -147,7 +147,7 @@ def _accumulated_moments_for_inference(mean, variance, is_training):
     update_accus = tf.get_variable(
         "update_accus",
         shape=[],
-        dtype=tf.int32,
+        dtype=tf.float32,
         initializer=tf.zeros_initializer(),
         trainable=False,
         collections=variable_collections)
@@ -165,10 +165,10 @@ def _accumulated_moments_for_inference(mean, variance, is_training):
       return tf.group([
           tf.assign_add(accu_mean, mean),
           tf.assign_add(accu_variance, variance),
-          tf.assign_add(accu_counter, 1),
+          tf.assign_add(accu_counter, 1.0),
       ])
     dep = tf.cond(
-        tf.equal(update_accus, 1),
+        tf.equal(update_accus, 1.0),
         update_accus_fn,
         tf.no_op)
     with tf.control_dependencies([dep]):
