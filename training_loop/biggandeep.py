@@ -11,7 +11,6 @@ def training_loop(config: Config):
     timer = Timer()
     print("Start task {}".format(config.task_name))
     dataset = get_dataset(name=config.dataset, data_dir=config.data_dir, seed=config.seed)
-    saver = tf.train.Saver()
 
     with tf.device('/cpu:0'):
         print("Constructing networks...")
@@ -43,6 +42,7 @@ def training_loop(config: Config):
         f_eval, l_eval = eval_iter.get_next()
         [inception_score, fid] = Network.eval(f_eval, l_eval)
 
+    saver = tf.train.Saver()
     print('Start training...\n')
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
