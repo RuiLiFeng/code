@@ -141,6 +141,12 @@ class Network(abstract_network.AbstractNetwork):
         return tf.compat.v1.data.make_initializable_iterator(dataset)
 
     def generate_samples(self, features, labels, is_training=True):
+        if self.conditional:
+            assert "sampled_labels" in features
+            features["sampled_y"] = self._get_one_hot_labels(
+                features["sampled_labels"])
+        else:
+            features["sampled_y"] = None
         features["generated"] = self.generator(features["z"],
                                                features["sampled_y"], is_training=is_training)
         return features, labels
