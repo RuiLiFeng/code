@@ -1,0 +1,20 @@
+Metadata-Version: 2.1
+Name: compare-gan
+Version: 3.0
+Summary: Compare GAN - A modular library for training and evaluating GANs.
+Home-page: https://github.com/google/compare_gan
+Author: Google LLC
+Author-email: no-reply@google.com
+License: Apache 2.0
+Description: UNKNOWN
+Keywords: tensorflow machine learning gan
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Topic :: Scientific/Engineering :: Artificial Intelligence
+Provides-Extra: tensorflow-probability
+Provides-Extra: tf_gpu
+Provides-Extra: tf
+Provides-Extra: pillow
