@@ -54,7 +54,7 @@ def training_loop(config: Config):
                 sess.run([d_update_op, g_ma_op])
             sess.run([g_update_op])
             if step % config.summary_per_steps == 0:
-                summary_file = sess.run([merge_op])
+                summary_file = sess.run(merge_op)
                 summary_writer.add_summary(summary_file, step)
             if step % config.eval_per_steps == 0:
                 timer.update()
