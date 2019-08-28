@@ -16,6 +16,7 @@ def training_loop(config: Config):
         print("Constructing networks...")
         Network = biggandeep.Network(dataset=dataset, model_dir=config.model_dir)
         data_iter = Network.input_data_as_iter(batch_size=config.batch_size // config.gpu_nums, seed=config.seed, mode="train")
+
         eval_iter = Network.input_data_as_iter(batch_size=config.batch_size // config.gpu_nums, seed=config.seed, mode="eval")
         global_step = tf.compat.v1.get_variable(
             'global_step', [],
@@ -49,6 +50,8 @@ def training_loop(config: Config):
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run([data_iter.initializer, eval_iter.initializer])
+        fsnap, lsnap = sess.run(data_iter.get_next())
+        save_image_grid(fsnap["images"], filename='reals.png')
         summary_writer = tf.summary.FileWriter(logdir=config.model_dir, graph=sess.graph)
         for step in range(config.total_step):
             for D_repeat in range(Network.disc_iters):
@@ -59,6 +62,8 @@ def training_loop(config: Config):
                 summary_writer.add_summary(summary_file, step)
             if step % config.eval_per_steps == 0:
                 timer.update()
+                fakes = sess.run(Network.generate_samples(fsnap["z"], fsnap["sampled_y"], is_training=False))
+                save_image_grid(fakes, filename='fakes%06d.png' % step)
                 [inception_score, fid] = sess.run([inception_score, fid])
                 print("Time %s, fid %f, inception_score %f ,step %d" % (timer.runing_time, fid, inception_score, step))
             if step % config.save_per_steps == 0:
