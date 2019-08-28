@@ -5,6 +5,7 @@
       <change afterPath="$PROJECT_DIR$/architectures/fsGAN.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/network/fsGAN.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/biggandeep.py" beforeDir="false" afterPath="$PROJECT_DIR$/network/biggandeep.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1084">
-              <caret line="121" column="39" lean-forward="true" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
+            <state relative-caret-position="612">
+              <caret line="104" column="55" lean-forward="true" selection-start-line="104" selection-start-column="55" selection-end-line="104" selection-end-column="55" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -65,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/network/fsGAN.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
+            <state relative-caret-position="684">
+              <caret line="112" column="43" selection-start-line="112" selection-start-column="43" selection-end-line="112" selection-end-column="43" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -170,12 +171,12 @@
         <option value="$PROJECT_DIR$/architectures/arch_ops.py" />
         <option value="$PROJECT_DIR$/snapshot.py" />
         <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/network/biggandeep.py" />
         <option value="$PROJECT_DIR$/training_loop/training_utils.py" />
         <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/network/fsGAN.py" />
         <option value="$PROJECT_DIR$/architectures/fsGAN.py" />
+        <option value="$PROJECT_DIR$/network/biggandeep.py" />
+        <option value="$PROJECT_DIR$/network/fsGAN.py" />
       </list>
     </option>
   </component>
@@ -267,18 +268,17 @@
       <workItem from="1566641009907" duration="8127000" />
       <workItem from="1566698382667" duration="11523000" />
       <workItem from="1566878753365" duration="8559000" />
-      <workItem from="1566891820478" duration="36215000" />
+      <workItem from="1566891820478" duration="36607000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69778000" />
+    <option name="totallyTimeSpent" value="70170000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-17" width="1096" height="1896" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19594595" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22200772" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32991013" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -292,7 +292,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.10669693" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.10669693" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32860386" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -429,16 +429,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network/fsGAN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="32" column="29" lean-forward="true" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/architectures/invertible_network.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
@@ -481,8 +471,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1084">
-          <caret line="121" column="39" lean-forward="true" selection-start-line="121" selection-start-column="39" selection-end-line="121" selection-end-column="39" />
+        <state relative-caret-position="612">
+          <caret line="104" column="55" lean-forward="true" selection-start-line="104" selection-start-column="55" selection-end-line="104" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/network/fsGAN.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="684">
+          <caret line="112" column="43" selection-start-line="112" selection-start-column="43" selection-end-line="112" selection-end-column="43" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

@@ -51,7 +51,7 @@ def training_loop(config: Config):
         sess.run(tf.global_variables_initializer())
         sess.run([data_iter.initializer, eval_iter.initializer])
         fsnap, lsnap = sess.run(data_iter.get_next())
-        save_image_grid(fsnap["images"], filename='reals.png')
+        save_image_grid(fsnap["images"], filename=config.model_dir + 'reals.png')
         summary_writer = tf.summary.FileWriter(logdir=config.model_dir, graph=sess.graph)
         for step in range(config.total_step):
             for D_repeat in range(Network.disc_iters):
@@ -63,7 +63,7 @@ def training_loop(config: Config):
             if step % config.eval_per_steps == 0:
                 timer.update()
                 fakes = sess.run(Network.generate_samples(fsnap["z"], fsnap["sampled_y"], is_training=False))
-                save_image_grid(fakes, filename='fakes%06d.png' % step)
+                save_image_grid(fakes, filename=config.model_dir + 'fakes%06d.png' % step)
                 [inception_score, fid] = sess.run([inception_score, fid])
                 print("Time %s, fid %f, inception_score %f ,step %d" % (timer.runing_time, fid, inception_score, step))
             if step % config.save_per_steps == 0:
