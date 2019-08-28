@@ -44,8 +44,9 @@ def training_loop(config: Config):
 
     saver = tf.train.Saver()
     print('Start training...\n')
-    with tf.Session(config=tf.ConfigProto(
-            allow_soft_placement=True)) as sess:
+    # with tf.Session(config=tf.ConfigProto(
+    #         allow_soft_placement=True)) as sess:
+    with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         sess.run([data_iter.initializer, eval_iter.initializer])
         summary_writer = tf.summary.FileWriter(logdir=config.model_dir, graph=sess.graph)
@@ -59,6 +60,6 @@ def training_loop(config: Config):
             if step % config.eval_per_steps == 0:
                 timer.update()
                 [inception_score, fid] = sess.run([inception_score, fid])
-                print("Time %s, fid %f, inception_score %f ,step %d", timer.runing_time, fid, inception_score, step)
+                print("Time %s, fid %f, inception_score %f ,step %d" % (timer.runing_time, fid, inception_score, step))
             if step % config.save_per_steps == 0:
                 saver.save(sess, save_path=config.model_dir + 'model.ckpt', global_step=step)

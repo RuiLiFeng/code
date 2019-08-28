@@ -58,3 +58,5 @@ class Config(object):
                 self.__dict__[key] = var
 
 
+def generate_image_grid(z_dim, image_shape, )
+
