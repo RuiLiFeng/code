@@ -29,7 +29,7 @@ class Config(object):
     """
     def __init__(self,
                  task_name='biggandeep',
-                 batch_size=4,
+                 batch_size=8,
                  total_step=250000,
                  model_dir='/gdata/fengrl/cvpr',
                  data_dir='/gpub/temp/imagenet2012',
