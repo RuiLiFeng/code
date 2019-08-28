@@ -481,7 +481,7 @@ def spectral_norm(inputs, epsilon=1e-12, singular_value="left"):
       u = tf.math.l2_normalize(tf.matmul(v, w), epsilon=epsilon)
 
   # Update the approximation.
-  with tf.control_dependencies([tf.assign(u_var, u, name="update_u")]):
+  with tf.control_dependencies([tf.compat.v1.assign(u_var, u, name="update_u")]):
     u = tf.identity(u)
 
   # The authors of SN-GAN chose to stop gradient propagating through u and v

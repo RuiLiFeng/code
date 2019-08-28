@@ -17,7 +17,7 @@ def training_loop(config: Config):
         Network = biggandeep.Network(dataset=dataset, model_dir=config.model_dir)
         data_iter = Network.input_data_as_iter(batch_size=config.batch_size // config.gpu_nums, seed=config.seed, mode="train")
         eval_iter = Network.input_data_as_iter(batch_size=config.batch_size // config.gpu_nums, seed=config.seed, mode="eval")
-        global_step = tf.get_variable(
+        global_step = tf.compat.v1.get_variable(
             'global_step', [],
             initializer=tf.constant_initializer(0), trainable=False)
     print("Building Tensorflow graph...")
@@ -61,4 +61,4 @@ def training_loop(config: Config):
                 [inception_score, fid] = sess.run([inception_score, fid])
                 print("Time %s, fid %f, inception_score %f ,step %d", timer.runing_time, fid, inception_score, step)
             if step % config.save_per_steps == 0:
-                saver.restore(sess, save_path=config.model_dir)
+                saver.save(sess, save_path=config.model_dir + 'model.ckpt', global_step=step)

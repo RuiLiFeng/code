@@ -181,7 +181,7 @@ def _transform_imagnet_image(image, target_image_shape, crop_method, seed):
     image = tf.slice(image, begin, [size, size, 3])
   elif crop_method != "none":
     raise ValueError("Unsupported crop method: {}".format(crop_method))
-  image = tf.image.resize_images(
+  image = tf.image.resize(
       image, [target_image_shape[0], target_image_shape[1]])
   image.set_shape(target_image_shape)
   return image

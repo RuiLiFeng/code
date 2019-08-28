@@ -24,6 +24,7 @@ import six
 import gin
 import utils
 import tensorflow as tf
+from tensorflow import compat as tfc
 
 
 @six.add_metaclass(abc.ABCMeta)
@@ -69,7 +70,7 @@ class AbstractGenerator(_Module):
     self._spectral_norm = spectral_norm
 
   def __call__(self, z, y, is_training, reuse=tf.AUTO_REUSE):
-    with tf.variable_scope(self.name, values=[z, y], reuse=reuse):
+    with tfc.v1.variable_scope(self.name, values=[z, y], reuse=reuse):
       outputs = self.apply(z=z, y=y, is_training=is_training)
     return outputs
 

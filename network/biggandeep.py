@@ -13,6 +13,7 @@ import utils
 import gin
 import tensorflow as tf
 from network import loss_lib, penalty_lib
+from tensorflow import compat as tfc
 
 FLAGS = flags.FLAGS
 
@@ -126,7 +127,7 @@ class Network(abstract_network.AbstractNetwork):
         """Creates the feature dictionary with images and z."""
         logging.info("_preprocess_fn(): images=%s, labels=%s, seed=%s",
                      images, labels, seed)
-        tf.set_random_seed(seed)
+        tfc.v1.set_random_seed(seed)
         features = {
             "images": images,
             "z": self.z_generator([self._z_dim], name="z"),
