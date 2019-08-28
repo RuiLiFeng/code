@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a85f7f9f-0a96-497c-bd02-29b3ac3b210f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/snapshot.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/training_loop/biggandeep.py" beforeDir="false" afterPath="$PROJECT_DIR$/training_loop/biggandeep.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/training_loop/training_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/training_loop/training_utils.py" afterDir="false" />
@@ -41,11 +42,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2052">
-              <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
+            <state relative-caret-position="864">
+              <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -86,7 +87,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training_loop/training_utils.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1308">
@@ -156,9 +157,9 @@
         <option value="$PROJECT_DIR$/network/biggandeep.py" />
         <option value="$PROJECT_DIR$/architectures/abstract_arch.py" />
         <option value="$PROJECT_DIR$/architectures/arch_ops.py" />
-        <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
         <option value="$PROJECT_DIR$/snapshot.py" />
         <option value="$PROJECT_DIR$/training_loop/training_utils.py" />
+        <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
       </list>
     </option>
   </component>
@@ -250,18 +251,17 @@
       <workItem from="1566641009907" duration="8127000" />
       <workItem from="1566698382667" duration="11523000" />
       <workItem from="1566878753365" duration="8559000" />
-      <workItem from="1566891820478" duration="21529000" />
+      <workItem from="1566891820478" duration="21984000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55092000" />
+    <option name="totallyTimeSpent" value="55547000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-17" width="1096" height="1896" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19594595" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19594595" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32991013" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -275,7 +275,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.10669693" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.10669693" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286334" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -432,22 +432,22 @@
     <entry file="file://$PROJECT_DIR$/snapshot.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2052">
-          <caret line="60" column="41" selection-start-line="60" selection-start-column="41" selection-end-line="60" selection-end-column="41" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/training_loop/training_utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1308">
           <caret line="60" column="44" selection-start-line="60" selection-start-column="44" selection-end-line="60" selection-end-column="44" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="48" column="30" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
