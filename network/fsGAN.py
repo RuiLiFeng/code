@@ -276,11 +276,3 @@ class Network(abstract_network.AbstractNetwork):
         inception_score = tf.contrib.gan.eval.classifier_score_from_logits(d_fake_logits)
         fid = tf.contrib.gan.eval.frechet_classifier_distance_from_activations(d_real_logits, d_fake_logits)
         return inception_score, fid
-
-
-
-
-
-
-
-
