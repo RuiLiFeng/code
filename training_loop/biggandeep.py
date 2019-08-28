@@ -61,4 +61,4 @@ def training_loop(config: Config):
                 [inception_score, fid] = sess.run([inception_score, fid])
                 print("Time %s, fid %f, inception_score %f ,step %d", timer.runing_time, fid, inception_score, step)
             if step % config.save_per_steps == 0:
-                saver.restore(sess, save_path=config.model_dir + '/step{}'.format(step) + "model.ckpt")
+                saver.restore(sess, save_path=config.model_dir)
