@@ -108,7 +108,7 @@ class Config(object):
         self.batch_size = batch_size
         self.total_step = total_step
         self.model_dir_root = model_dir_root
-        self.model_dir = model_dir_root
+        self.model_dir = None
         self.data_dir = data_dir
         self.dataset = dataset
         self.summary_per_steps = summary_per_steps
@@ -136,10 +136,24 @@ class Config(object):
         os.makedirs(model_dir)
         self.model_dir = model_dir
 
+    def write_config_and_gin(self, gin_file):
+        assert self.model_dir is not None
+        with open(os.path.join(self.model_dir, "config.txt"), "w") as f:
+            f.write("Config Settings: \n")
+            for key, var in self.__dict__:
+                f.write(key + ": " + var)
+            f.write("*" * 10 + '\n')
+            f.write("Gin Settings: \n")
+            with open(gin_file, "r").readlines() as g:
+                for line in g:
+                    f.write(line)
+
     def make_task_log(self):
+        assert self.model_dir is not None
         self.logger = Logger(file_name=os.path.join(self.model_dir, "log.txt"), file_mode="w", should_flush=True)
 
     def terminate(self):
+        assert self.logger is not None
         self.logger.close()
         open(os.path.join(self.model_dir, "_finished.txt"), "w").close()
 

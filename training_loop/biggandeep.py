@@ -72,4 +72,3 @@ def training_loop(config: Config):
                       (timer.runing_time, fid, inception_score, step))
             if step % config.save_per_steps == 0:
                 saver.save(sess, save_path=config.model_dir + '/model.ckpt', global_step=step)
-        config.terminate()
