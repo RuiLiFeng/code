@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a85f7f9f-0a96-497c-bd02-29b3ac3b210f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a85f7f9f-0a96-497c-bd02-29b3ac3b210f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,8 +97,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+            <state relative-caret-position="1368">
+              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -172,8 +170,8 @@
         <option value="$PROJECT_DIR$/network/biggandeep.py" />
         <option value="$PROJECT_DIR$/network/fsGAN.py" />
         <option value="$PROJECT_DIR$/training_loop/training_utils.py" />
-        <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
       </list>
     </option>
   </component>
@@ -266,12 +264,12 @@
       <workItem from="1566698382667" duration="11523000" />
       <workItem from="1566878753365" duration="8559000" />
       <workItem from="1566891820478" duration="48522000" />
-      <workItem from="1567084839367" duration="1125000" />
+      <workItem from="1567084839367" duration="1617000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="83210000" />
+    <option name="totallyTimeSpent" value="83702000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-17" width="1096" height="1896" extended-state="6" />
@@ -291,7 +289,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.10669693" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.10669693" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.3275488" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -463,8 +461,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="66" column="45" selection-start-line="66" selection-start-column="45" selection-end-line="66" selection-end-column="45" />
+        <state relative-caret-position="1368">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
