@@ -3,6 +3,8 @@ import gin
 import numpy as np
 import tensorflow as tf
 import PIL.Image
+import os
+import re
 
 
 class Timer(object):
@@ -34,7 +36,7 @@ class Config(object):
                  task_name='biggandeep',
                  batch_size=8,
                  total_step=250000,
-                 model_dir='/gdata/fengrl/cvpr',
+                 model_dir_root='/gdata/fengrl/cvpr',
                  data_dir='/gpub/temp/imagenet2012',
                  dataset="imagenet_128",
                  summary_per_steps=100,
@@ -46,7 +48,8 @@ class Config(object):
         self.task_name = task_name
         self.batch_size = batch_size
         self.total_step = total_step
-        self.model_dir = model_dir
+        self.model_dir_root = model_dir_root
+        self.model_dir = model_dir_root
         self.data_dir = data_dir
         self.dataset = dataset
         self.summary_per_steps = summary_per_steps
@@ -59,6 +62,33 @@ class Config(object):
         for key, var in kwargs.items():
             if key in self.__dict__:
                 self.__dict__[key] = var
+
+    def make_task_dir(self):
+        if not os.path.exists(self.model_dir_root):
+            print("Creating the model dir root: {}".format(self.model_dir_root))
+            os.makedirs(self.model_dir_root)
+        model_id = get_next_model_id(self.model_dir_root)
+        model_name = "{0:05d}-{1}".format(model_id, self.task_name)
+        model_dir = os.path.join(self.model_dir_root, model_name)
+        if os.path.exists(model_dir):
+            raise RuntimeError("The model dir already exists! ({0)".format(model_dir))
+        print("Creating the model dir: {}".format(model_dir))
+        os.makedirs(model_dir)
+        self.model_dir = model_dir
+
+
+def get_next_model_id(model_dir_root):
+    dir_names = [d for d in os.listdir(model_dir_root) if os.path.isdir(
+        os.path.join(model_dir_root, d)
+    )]
+    r = re.compile("^\\d+")
+    run_id = 0
+    for dir_name in dir_names:
+        m = r.match(dir_name)
+        if m is not None:
+            i = int(m.group())
+            run_id = max(run_id, i+1)
+    return run_id
 
 
 def adjust_dynamic_range(data, drange_in, drange_out):
