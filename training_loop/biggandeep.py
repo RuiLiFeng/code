@@ -62,7 +62,7 @@ def training_loop(config: Config):
                 summary_writer.add_summary(summary_file, step)
             if step % config.eval_per_steps == 0:
                 timer.update()
-                fakes, _ = sess.run(Network.generate_samples(fsnap, lsnap, is_training=False))
+                fakes, _ = Network.generate_samples(fsnap, lsnap, is_training=False)
                 save_image_grid(fakes["generated"], filename=config.model_dir + '/fakes%06d.png' % step)
                 [inception_score, fid] = sess.run([inception_score, fid])
                 print("Time %s, fid %f, inception_score %f ,step %d" % (timer.runing_time, fid, inception_score, step))

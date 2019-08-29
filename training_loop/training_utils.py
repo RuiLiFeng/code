@@ -70,7 +70,17 @@ def adjust_dynamic_range(data, drange_in, drange_out):
 
 
 def create_image_grid(images, grid_size=None):
+    """
+    Input image nhwc, this function requires nchw
+    :param images:
+    :param grid_size:
+    :return:
+    """
     assert images.ndim == 3 or images.ndim == 4
+    if images.ndim == 4:
+        images = images.transpose([0, 3, 1, 2])
+    else:
+        images = images.transpose([2, 0, 1])
     num, img_w, img_h = images.shape[0], images.shape[-1], images.shape[-2]
 
     if grid_size is not None:
@@ -91,7 +101,7 @@ def convert_to_pil_image(image, drange=[0, 1]):
     assert image.ndim == 2 or image.ndim == 3
     if image.ndim == 3:
         if image.shape[0] == 1:
-            image = image[0] # grayscale CHW => HW
+            image = image[0]  # grayscale CHW => HW
         else:
             image = image.transpose(1, 2, 0) # CHW -> HWC
 
