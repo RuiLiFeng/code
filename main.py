@@ -7,5 +7,6 @@ import gin.tf.external_configurables
 gin.parse_config_file('/ghome/fengrl/home/code/code/config/biggan_imagenet128.gin')
 config = Config()
 config.make_task_dir()
-config.set(gpu_nums=8)
+config.make_task_log()
+config.set(gpu_nums=8, batch_size=32)
 training_loop(config=config)

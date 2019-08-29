@@ -5,6 +5,8 @@ import tensorflow as tf
 import PIL.Image
 import os
 import re
+import sys
+from typing import Any
 
 
 class Timer(object):
@@ -25,6 +27,63 @@ class Timer(object):
     @property
     def runing_time(self):
         return self._last_update_time - self._init_time
+
+
+class Logger(object):
+    """Redirect stderr to stdout, optionally print stdout to a file,
+    and optionally force flushing on both stdout and the file."""
+
+    def __init__(self, file_name: str = None, file_mode: str = "w", should_flush: bool = True):
+        self.file = None
+
+        if file_name is not None:
+            self.file = open(file_name, file_mode)
+
+        self.should_flush = should_flush
+        self.stdout = sys.stdout
+        self.stderr = sys.stderr
+
+        sys.stdout = self
+        sys.stderr = self
+
+    def __enter__(self) -> "Logger":
+        return self
+
+    def __exit__(self, exc_type: Any, exc_value: Any, traceback: Any) -> None:
+        self.close()
+
+    def write(self, text: str) -> None:
+        """Write text to stdout (and a file) and optionally flush."""
+        if len(text) == 0:  # workaround for a bug in VSCode debugger: sys.stdout.write(''); sys.stdout.flush() => crash
+            return
+
+        if self.file is not None:
+            self.file.write(text)
+
+        self.stdout.write(text)
+
+        if self.should_flush:
+            self.flush()
+
+    def flush(self) -> None:
+        """Flush written text to both stdout and a file, if open."""
+        if self.file is not None:
+            self.file.flush()
+
+        self.stdout.flush()
+
+    def close(self) -> None:
+        """Flush, close possible files, and remove stdout/stderr mirroring."""
+        self.flush()
+
+        # if using multiple loggers, prevent closing in wrong order
+        if sys.stdout is self:
+            sys.stdout = self.stdout
+        if sys.stderr is self:
+            sys.stderr = self.stderr
+
+        if self.file is not None:
+            self.file.close()
 
 
 @gin.configurable
@@ -57,6 +116,7 @@ class Config(object):
         self.save_per_steps = save_per_steps
         self.seed = seed
         self.gpu_nums = gpu_nums
+        self.logger = None
 
     def set(self, **kwargs):
         for key, var in kwargs.items():
@@ -75,6 +135,13 @@ class Config(object):
         print("Creating the model dir: {}".format(model_dir))
         os.makedirs(model_dir)
         self.model_dir = model_dir
+
+    def make_task_log(self):
+        self.logger = Logger(file_name=os.path.join(self.model_dir, "log.txt"), file_mode="w", should_flush=True)
+
+    def terminate(self):
+        self.logger.close()
+        open(os.path.join(self.model_dir, "_finished.txt"), "w").close()
 
 
 def get_next_model_id(model_dir_root):
