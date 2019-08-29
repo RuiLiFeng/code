@@ -141,7 +141,7 @@ class Config(object):
         with open(os.path.join(self.model_dir, "config.txt"), "w") as f:
             f.write("Config Settings: \n")
             for key in self.__dict__:
-                f.write(key + ": " + self.__dict__[key])
+                f.write(key + ": {}".format(self.__dict__[key]))
             f.write("*" * 10 + '\n')
             f.write("Gin Settings: \n")
             with open(gin_file, "r").readlines() as g:
