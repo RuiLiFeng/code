@@ -48,7 +48,7 @@ def _compute_fid(reals, fakes):
 
 
 def call_metric(run_dir_root, name, **kwargs):
-    inception_url = os.path.join(run_dir_root, '/metric/frozen_inception_v1_2015_12_05.tar.gz')
+    inception_url = os.path.join(run_dir_root, 'metric/frozen_inception_v1_2015_12_05.tar.gz')
     if not os.path.exists(inception_url):
         raise ValueError("Inception file is None: {}".format(inception_url))
     global INCEPTION_URL
