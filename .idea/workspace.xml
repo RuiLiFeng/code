@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a85f7f9f-0a96-497c-bd02-29b3ac3b210f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/metric/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metric/frechet_inception_distance.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/metric/inception_score.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/biggan_imagenet128.gin" beforeDir="false" afterPath="$PROJECT_DIR$/config/biggan_imagenet128.gin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/network/fsGAN.py" beforeDir="false" afterPath="$PROJECT_DIR$/network/fsgan.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,8 +20,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="277" column="35" lean-forward="true" selection-start-line="277" selection-start-column="35" selection-end-line="277" selection-end-column="35" />
+            <state relative-caret-position="5040">
+              <caret line="155" column="47" lean-forward="true" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -30,11 +29,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/biggan_imagenet128.gin">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/metric/inception_score.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="1" selection-end-column="23" />
+            <state relative-caret-position="396">
+              <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -42,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/metric/frechet_inception_distance.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+            <state relative-caret-position="468">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -67,22 +75,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/network/fsGAN.py">
+        <entry file="file://$PROJECT_DIR$/network/fsgan.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2952">
-              <caret line="97" selection-start-line="97" selection-end-line="97" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/architectures/fsGAN.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6192">
-              <caret line="184" column="56" selection-start-line="184" selection-start-column="56" selection-end-line="184" selection-end-column="56" />
+            <state relative-caret-position="360">
+              <caret line="22" column="48" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -102,8 +98,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+            <state relative-caret-position="440">
+              <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -165,20 +161,21 @@
         <option value="$PROJECT_DIR$/misc.py" />
         <option value="$PROJECT_DIR$/network/TwoStageBiggandeep.py" />
         <option value="$PROJECT_DIR$/network/abstract_network.py" />
-        <option value="$PROJECT_DIR$/config/biggan_imagenet128.gin" />
         <option value="$PROJECT_DIR$/dataset/dataset.py" />
         <option value="$PROJECT_DIR$/architectures/abstract_arch.py" />
         <option value="$PROJECT_DIR$/architectures/arch_ops.py" />
         <option value="$PROJECT_DIR$/snapshot.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/architectures/fsGAN.py" />
-        <option value="$PROJECT_DIR$/network/biggandeep.py" />
-        <option value="$PROJECT_DIR$/network/fsGAN.py" />
         <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/training_loop/training_utils.py" />
         <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
         <option value="$PROJECT_DIR$/metric/inception_score.py" />
+        <option value="$PROJECT_DIR$/network/biggandeep.py" />
         <option value="$PROJECT_DIR$/metric/frechet_inception_distance.py" />
+        <option value="$PROJECT_DIR$/network/fsGAN.py" />
+        <option value="$PROJECT_DIR$/network/fsgan.py" />
+        <option value="$PROJECT_DIR$/config/biggan_imagenet128.gin" />
       </list>
     </option>
   </component>
@@ -200,6 +197,16 @@
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
               <item name="code" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="architectures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="code" type="b2602c69:ProjectViewProjectNode" />
+              <item name="code" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="code" type="b2602c69:ProjectViewProjectNode" />
@@ -226,11 +233,12 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/network" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\17437\iCloudDrive\few-shot-gan\code\network" />
       <recent name="C:\Users\17437\iCloudDrive\few-shot-gan\code\config" />
     </key>
   </component>
@@ -262,12 +270,12 @@
       <workItem from="1566878753365" duration="8559000" />
       <workItem from="1566891820478" duration="48522000" />
       <workItem from="1567084839367" duration="5989000" />
-      <workItem from="1567145748310" duration="4035000" />
+      <workItem from="1567145748310" duration="5921000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92109000" />
+    <option name="totallyTimeSpent" value="93995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -340,13 +348,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/snapshot.py" />
-    <entry file="file://$PROJECT_DIR$/config/biggan_imagenet128.gin">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/a.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -390,16 +391,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network/fsGAN.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2952">
-          <caret line="97" selection-start-line="97" selection-end-line="97" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/architectures/fsGAN.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="6192">
@@ -439,10 +430,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
+        <state relative-caret-position="440">
+          <caret line="50" column="47" selection-start-line="50" selection-start-column="47" selection-end-line="50" selection-end-column="47" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metric/inception_score.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metric/frechet_inception_distance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -457,33 +468,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
+    <entry file="file://$PROJECT_DIR$/network/fsgan.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="582">
-          <caret line="277" column="35" lean-forward="true" selection-start-line="277" selection-start-column="35" selection-end-line="277" selection-end-column="35" />
+        <state relative-caret-position="360">
+          <caret line="22" column="48" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metric/inception_score.py">
+    <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="1" selection-end-column="23" />
+        <state relative-caret-position="5040">
+          <caret line="155" column="47" lean-forward="true" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/metric/frechet_inception_distance.py">
+    <entry file="file://$PROJECT_DIR$/config/biggan_imagenet128.gin">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#49#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="9" column="45" lean-forward="true" selection-start-line="9" selection-start-column="45" selection-end-line="9" selection-end-column="45" />
         </state>
       </provider>
     </entry>
