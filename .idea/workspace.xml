@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a85f7f9f-0a96-497c-bd02-29b3ac3b210f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/metric/tfmetric.py" beforeDir="false" afterPath="$PROJECT_DIR$/metric/tfmetric.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -85,8 +84,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/metric/tfmetric.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+            <state relative-caret-position="612">
+              <caret line="23" column="66" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="23" selection-end-column="66" />
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -269,17 +268,17 @@
       <workItem from="1566878753365" duration="8559000" />
       <workItem from="1566891820478" duration="48522000" />
       <workItem from="1567084839367" duration="5989000" />
-      <workItem from="1567145748310" duration="16443000" />
+      <workItem from="1567145748310" duration="17509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104517000" />
+    <option name="totallyTimeSpent" value="105583000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-17" width="1096" height="1896" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.41409266" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.41409266" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32991013" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -529,8 +528,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/metric/tfmetric.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="32" column="43" lean-forward="true" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
+        <state relative-caret-position="612">
+          <caret line="23" column="66" lean-forward="true" selection-start-line="22" selection-start-column="4" selection-end-line="23" selection-end-column="66" />
           <folding>
             <element signature="e#0#49#0" expanded="true" />
           </folding>

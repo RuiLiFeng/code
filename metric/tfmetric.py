@@ -2,6 +2,9 @@ from tensorflow.contrib.gan import eval as tfeval
 import os
 import gin
 import functools
+import tarfile
+from tensorflow.core.framework import graph_pb2
+
 
 INCEPTION_URL = 'http://download.tensorflow.org/models/frozen_inception_v1_2015_12_05.tar.gz'
 INCEPTION_FROZEN_GRAPH = 'inceptionv1_for_inception_score.pb'
@@ -16,7 +19,10 @@ def _default_graph_def_fn():
     #     INCEPTION_URL,
     #     INCEPTION_FROZEN_GRAPH,
     #     os.path.basename(INCEPTION_URL))
-    return tfeval.get_graph_def_from_disk(INCEPTION_URL)
+    # return tfeval.get_graph_def_from_disk(INCEPTION_URL)
+    with tarfile.open(INCEPTION_URL, 'r:gz') as tar:
+        proto_str = tar.extractfile(INCEPTION_FROZEN_GRAPH).read()
+    return graph_pb2.GraphDef.FromString(proto_str)
 
 
 def _preprocess_fn(images):
