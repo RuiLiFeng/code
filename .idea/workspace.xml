@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a85f7f9f-0a96-497c-bd02-29b3ac3b210f" name="Default Changelist" comment="" />
+    <list default="true" id="a85f7f9f-0a96-497c-bd02-29b3ac3b210f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/training_loop/biggandeep.py" beforeDir="false" afterPath="$PROJECT_DIR$/training_loop/biggandeep.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,11 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
+            <state relative-caret-position="624">
+              <caret line="275" column="62" selection-start-line="275" selection-start-column="62" selection-end-line="275" selection-end-column="62" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -97,8 +100,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="905">
-              <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+            <state relative-caret-position="368">
+              <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -118,11 +121,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/training_loop/training_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="828">
-              <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+            <state relative-caret-position="7740">
+              <caret line="223" selection-start-line="223" selection-end-line="223" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -170,16 +173,16 @@
         <option value="$PROJECT_DIR$/network/biggandeep.py" />
         <option value="$PROJECT_DIR$/network/fsGAN.py" />
         <option value="$PROJECT_DIR$/main.py" />
-        <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
         <option value="$PROJECT_DIR$/training_loop/training_utils.py" />
+        <option value="$PROJECT_DIR$/training_loop/biggandeep.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1912" />
-    <option name="y" value="-17" />
-    <option name="width" value="1096" />
-    <option name="height" value="1896" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -264,15 +267,16 @@
       <workItem from="1566698382667" duration="11523000" />
       <workItem from="1566878753365" duration="8559000" />
       <workItem from="1566891820478" duration="48522000" />
-      <workItem from="1567084839367" duration="2585000" />
+      <workItem from="1567084839367" duration="5989000" />
+      <workItem from="1567145748310" duration="1873000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84670000" />
+    <option name="totallyTimeSpent" value="89947000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-17" width="1096" height="1896" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.22876447" />
@@ -286,11 +290,11 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32973894" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.10669693" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.32746878" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.6258134" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -439,32 +443,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
+    <entry file="file://$PROJECT_DIR$/training_loop/training_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="146" column="8" selection-start-line="146" selection-start-column="8" selection-end-line="146" selection-end-column="8" />
+        <state relative-caret-position="7740">
+          <caret line="223" selection-start-line="223" selection-end-line="223" />
           <folding>
-            <element signature="e#0#38#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/training_loop/biggandeep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="905">
-          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="74" />
+        <state relative-caret-position="368">
+          <caret line="45" column="42" selection-start-line="45" selection-start-column="42" selection-end-line="45" selection-end-column="42" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/training_loop/training_utils.py">
+    <entry file="file://$PROJECT_DIR$/network/biggandeep.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="828">
-          <caret line="146" column="28" selection-start-line="146" selection-start-column="28" selection-end-line="146" selection-end-column="28" />
+        <state relative-caret-position="624">
+          <caret line="275" column="62" selection-start-line="275" selection-start-column="62" selection-end-line="275" selection-end-column="62" />
           <folding>
-            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
