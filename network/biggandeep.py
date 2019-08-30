@@ -14,6 +14,7 @@ import gin
 import tensorflow as tf
 from network import loss_lib, penalty_lib
 from tensorflow import compat as tfc
+from metric import frechet_inception_distance, inception_score
 
 FLAGS = flags.FLAGS
 
@@ -258,24 +259,9 @@ class Network(abstract_network.AbstractNetwork):
         fs, ls = self.generate_samples(f_eval, l_eval, is_training=False)
         images = fs["images"]  # Real images.
         generated = fs["generated"]  # Fake images.
-        if self.conditional:
-            y = self._get_one_hot_labels(ls)
-            sampled_y = self._get_one_hot_labels(fs["sampled_labels"])
-            all_y = tf.concat([y, sampled_y], axis=0)
-        else:
-            y = None
-            sampled_y = None
-            all_y = None
-
-        # Compute discriminator output for real and fake images in one batch.
-        all_images = tf.concat([images, generated], axis=0)
-        d_all, d_all_logits, _ = self.discriminator(
-            all_images, y=all_y, is_training=False)
-        d_real, d_fake = tf.split(d_all, 2)
-        d_real_logits, d_fake_logits = tf.split(d_all_logits, 2)
-        inception_score = tf.contrib.gan.eval.classifier_score_from_logits(d_fake_logits)
-        fid = tf.contrib.gan.eval.frechet_classifier_distance_from_activations(d_real_logits, d_fake_logits)
-        return inception_score, fid
+        inception_score_eval = inception_score.calculate_is(images)
+        fid_eval = frechet_inception_distance.calculate_fid(images, generated)
+        return inception_score_eval, fid_eval
 
 
 
