@@ -13,6 +13,7 @@ from absl import logging
 import architectures.arch_ops as ops
 
 
+@gin.configurable()
 class Invertible_network(object):
     """Invertible network."""
 
