@@ -63,7 +63,7 @@ def training_loop(config: Config):
             if step % config.summary_per_steps == 0:
                 summary_file = sess.run(merge_op)
                 summary_writer.add_summary(summary_file, step)
-            if step % config.eval_per_steps == 0:
+            if step % config.eval_per_steps == config.eval_per_steps // 2:
                 timer.update()
                 fakes_np = sess.run(fakes["generated"])
                 save_image_grid(fakes_np, filename=config.model_dir + '/fakes%06d.png' % step)
