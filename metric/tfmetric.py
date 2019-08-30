@@ -12,10 +12,11 @@ INCEPTION_DEFAULT_IMAGE_SIZE = 299
 
 
 def _default_graph_def_fn():
-    return tfeval.get_graph_def_from_url_tarball(
-        INCEPTION_URL,
-        INCEPTION_FROZEN_GRAPH,
-        os.path.basename(INCEPTION_URL))
+    # return tfeval.get_graph_def_from_url_tarball(
+    #     INCEPTION_URL,
+    #     INCEPTION_FROZEN_GRAPH,
+    #     os.path.basename(INCEPTION_URL))
+    return tfeval.get_graph_def_from_disk(INCEPTION_URL)
 
 
 def _preprocess_fn(images):
