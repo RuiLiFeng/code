@@ -14,7 +14,7 @@ import gin
 import tensorflow as tf
 from network import loss_lib, penalty_lib
 from tensorflow import compat as tfc
-from metric import frechet_inception_distance, inception_score
+from metric.tfmetric import call_metric
 
 FLAGS = flags.FLAGS
 
@@ -24,6 +24,7 @@ class Network(abstract_network.AbstractNetwork):
     def __init__(self,
                  dataset,
                  model_dir,
+                 run_dir,
                  z_dim=128,
                  disc_iters=2,
                  g_use_ma=False,
@@ -41,6 +42,7 @@ class Network(abstract_network.AbstractNetwork):
         :param dataset: `ImageDataset` object. If `conditional` the dataset must provide
         labels and the number of classes bust known.
         :param model_dir: Directory path for storing summary files.
+        :param run_dir: Directory path for python scripts.
         :param g_use_ma: If True keep moving averages for weights in G.
         :param ma_decay: Decay rate for moving averages for G's weights.
         :param ma_start_step: Start step for keeping moving averages. Before this the
@@ -78,6 +80,7 @@ class Network(abstract_network.AbstractNetwork):
         self.d_loss = None
         self.g_loss = None
         self.penalty_loss = None
+        self.run_dir = run_dir
 
         # Cache for discriminator and generator objects.
         self._discriminator = None
@@ -259,8 +262,13 @@ class Network(abstract_network.AbstractNetwork):
         fs, ls = self.generate_samples(f_eval, l_eval, is_training=False)
         images = fs["images"]  # Real images.
         generated = fs["generated"]  # Fake images.
-        inception_score_eval = inception_score.calculate_is(images)
-        fid_eval = frechet_inception_distance.calculate_fid(images, generated)
+        inception_score_eval = call_metric(run_dir_root=self.run_dir,
+                                           name="is",
+                                           images=images)
+        fid_eval = call_metric(run_dir_root=self.run_dir,
+                               name="fid",
+                               reals=images,
+                               fakes=generated)
         return inception_score_eval, fid_eval
 
 

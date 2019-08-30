@@ -98,6 +98,7 @@ class Config(object):
                  model_dir_root='/gdata/fengrl/cvpr',
                  data_dir='/gpub/temp/imagenet2012',
                  dataset="imagenet_128",
+                 run_dir="/ghome/fengrl/home/code/code",
                  summary_per_steps=100,
                  eval_per_steps=2500,
                  save_per_steps=10000,
@@ -111,6 +112,7 @@ class Config(object):
         self.model_dir = None
         self.data_dir = data_dir
         self.dataset = dataset
+        self.run_dir = run_dir
         self.summary_per_steps = summary_per_steps
         self.eval_per_steps = eval_per_steps
         self.save_per_steps = save_per_steps
