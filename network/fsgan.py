@@ -8,7 +8,7 @@ import itertools
 from absl import flags
 from absl import logging
 from network import abstract_network
-from architectures import fsGAN
+from architectures import fs_GAN
 import utils
 import gin
 import tensorflow as tf
@@ -89,12 +89,12 @@ class Network(abstract_network.AbstractNetwork):
 
     @property
     def generator(self):
-        self._generator = fsGAN.Generator(image_shape=self._dataset.image_shape)
+        self._generator = fs_GAN.Generator(image_shape=self._dataset.image_shape)
         return self._generator
 
     @property
     def discriminator(self):
-        self._discriminator = fsGAN.Discriminator()
+        self._discriminator = fs_GAN.Discriminator()
         return self._discriminator
 
     def _get_one_hot_labels(self, labels):
