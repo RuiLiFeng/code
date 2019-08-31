@@ -56,7 +56,7 @@ class Network(abstract_network.AbstractNetwork):
         :param conditional: Whether the GAN is conditional. If True both G and Y will
         get passed labels.
         """
-        super(Network, self).__init__(dataset=dataset, parameters=None, model_dir=model_dir)
+        super(Network, self).__init__(dataset=dataset, model_dir=model_dir)
         self._g_use_ma = g_use_ma
         self._ma_decay = ma_decay
         self._ma_start_step = ma_start_step
@@ -244,8 +244,8 @@ class Network(abstract_network.AbstractNetwork):
             return None
         # The decay value is set to 0 if we're before the moving-average start
         # point, so that the EMA vars will be the normal vars.
-        decay = self._ma_decay * tf.cast(
-            tf.greater_equal(global_step, self._ma_start_step), tf.float32)
+        # decay = self._ma_decay * tf.cast(
+        #     tf.greater_equal(global_step, self._ma_start_step), tf.float32)
         op = tf.train.ExponentialMovingAverage(decay)
         return op.apply(self.generator.trainable_variables)
 

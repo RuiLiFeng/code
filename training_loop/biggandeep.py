@@ -19,13 +19,15 @@ def training_loop(config: Config):
             batch_size=config.batch_size // config.gpu_nums, seed=config.seed, mode="train")
 
         eval_iter = Network.input_data_as_iter(
-            batch_size=config.batch_size // config.gpu_nums, seed=config.seed, mode="eval")
+            batch_size=config.batch_size // config.gpu_nums, seed=config.seed, mode="train")
         global_step = tf.compat.v1.get_variable(
             'global_step', [],
             initializer=tf.constant_initializer(0), trainable=False)
     print("Building Tensorflow graph...")
     g_grad_pool = []
     d_grad_pool = []
+    inception_score_pool = []
+    fid_pool = []
     for gpu in range(config.gpu_nums):
         with tf.name_scope("GPU%d" % gpu), tf.device('/gpu:%d' % gpu):
             fs, ls = data_iter.get_next()
@@ -37,13 +39,17 @@ def training_loop(config: Config):
                 g_grad_pool.append(g_op.compute_gradients(g_loss, Network.generator.trainable_variables))
             with tf.control_dependencies([d_loss]):
                 d_grad_pool.append(d_op.compute_gradients(d_loss, Network.discriminator.trainable_variables))
+            f_eval, l_eval = eval_iter.get_next()
+            inception_score_shadow, fid_shadow = Network.eval(f_eval, l_eval)
+            inception_score_pool.append(inception_score_shadow)
+            fid_pool.append(fid_shadow)
     with tf.device('/cpu:0'):
         g_update_op = Network.update(g_grad_pool, g_op)
         d_update_op = Network.update(d_grad_pool, d_op)
         g_ma_op = Network.ma_op(global_step=global_step)
         merge_op = Network.summary()
-        f_eval, l_eval = eval_iter.get_next()
-        [inception_score, fid] = Network.eval(f_eval, l_eval)
+        inception_score = tf.reduce_mean(inception_score_pool, 0)
+        fid = tf.reduce_mean(fid_pool, 0)
 
     saver = tf.train.Saver()
     print('Start training...\n')
