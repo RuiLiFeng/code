@@ -8,8 +8,8 @@ weights.initializer = "orthogonal"
 standardize_batch.decay = 0.9
 standardize_batch.epsilon = 1e-5
 standardize_batch.use_moving_averages = False
-
-
+Generator.embed_y = True
+Discriminator.project_y = True
 # Network Settings
 Network.conditional = True
 Network.g_use_ma = True
