@@ -44,7 +44,7 @@ def training_loop(config: Config):
             inception_score_pool.append(inception_score_shadow)
             fid_pool.append(fid_shadow)
     with tf.device('/cpu:0'):
-        g_update_op = Network.update(g_grad_pool, g_op)
+        g_update_op = Network.update(g_grad_pool, g_op, global_step)
         d_update_op = Network.update(d_grad_pool, d_op)
         g_ma_op = Network.ma_op(global_step=global_step)
         merge_op = Network.summary()

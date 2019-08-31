@@ -211,7 +211,7 @@ class Network(abstract_network.AbstractNetwork):
         opt = self._g_op_fn(self._g_lr, name="g_opt")
         return opt
 
-    def update(self, tower_grads, op):
+    def update(self, tower_grads, op, global_step=None):
         average_grads = []
         for grad_and_vars in zip(*tower_grads):
             # Note that each grad_and_vars looks like the following:
@@ -237,15 +237,15 @@ class Network(abstract_network.AbstractNetwork):
         for grad, var in average_grads:
             tf.summary.histogram(var.name, var)
             tf.summary.histogram(var.name + '_average_gradient', grad)
-        return op.apply_gradients(average_grads)
+        return op.apply_gradients(average_grads, global_step=global_step)
 
     def ma_op(self, global_step=0):
         if not self._g_use_ma:
             return None
         # The decay value is set to 0 if we're before the moving-average start
         # point, so that the EMA vars will be the normal vars.
-        # decay = self._ma_decay * tf.cast(
-        #     tf.greater_equal(global_step, self._ma_start_step), tf.float32)
+         decay = self._ma_decay * tf.cast(
+             tf.greater_equal(global_step, self._ma_start_step), tf.float32)
         op = tf.train.ExponentialMovingAverage(decay)
         return op.apply(self.generator.trainable_variables)
 
