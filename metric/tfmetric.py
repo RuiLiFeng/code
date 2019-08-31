@@ -26,7 +26,7 @@ def _default_graph_def_fn():
 
 
 def _preprocess_fn(images):
-    return tfeval.preprocess_image(images * 255)
+    return tfeval.preprocess_image(images * 255.0)
 
 
 def _compute_is(images):
