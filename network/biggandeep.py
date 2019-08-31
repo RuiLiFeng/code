@@ -244,8 +244,8 @@ class Network(abstract_network.AbstractNetwork):
             return None
         # The decay value is set to 0 if we're before the moving-average start
         # point, so that the EMA vars will be the normal vars.
-         decay = self._ma_decay * tf.cast(
-             tf.greater_equal(global_step, self._ma_start_step), tf.float32)
+        decay = self._ma_decay * tf.cast(
+            tf.greater_equal(global_step, self._ma_start_step), tf.float32)
         op = tf.train.ExponentialMovingAverage(decay)
         return op.apply(self.generator.trainable_variables)
 
