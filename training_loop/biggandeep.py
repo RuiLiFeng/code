@@ -31,18 +31,20 @@ def training_loop(config: Config):
             fs, ls = data_iter.get_next()
             fs, ls = Network.generate_samples(fs, ls)
             g_loss, d_loss = Network.create_loss(fs, ls)
-            g_op = Network.get_gen_optimizer()
-            d_op = Network.get_disc_optimizer()
+            with tf.control_dependencies(tf.get_collection(tf.GraphKeys.UPDATE_OPS)):
+                g_op = Network.get_gen_optimizer()
+                d_op = Network.get_disc_optimizer()
             with tf.control_dependencies([g_loss]):
                 g_grad_pool.append(g_op.compute_gradients(g_loss, Network.generator.trainable_variables))
             with tf.control_dependencies([d_loss]):
                 d_grad_pool.append(d_op.compute_gradients(d_loss, Network.discriminator.trainable_variables))
             f_eval, l_eval = eval_iter.get_next()
     with tf.device('/cpu:0'):
-        g_update_op = Network.update(g_grad_pool, g_op, global_step)
-        d_update_op = Network.update(d_grad_pool, d_op)
-        g_ma_op = Network.ma_op(global_step=global_step)
-        merge_op = Network.summary()
+        with tf.control_dependencies(tf.get_collection(tf.GraphKeys.UPDATE_OPS)):
+            g_update_op = Network.update(g_grad_pool, g_op, global_step)
+            d_update_op = Network.update(d_grad_pool, d_op)
+            g_ma_op = Network.ma_op(global_step=global_step)
+            merge_op = Network.summary()
         inception_score, fid = Network.eval(f_eval, l_eval)
 
     saver = tf.train.Saver()
