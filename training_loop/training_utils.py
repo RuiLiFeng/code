@@ -192,6 +192,8 @@ def create_image_grid(images, grid_size=None):
     assert images.ndim == 3 or images.ndim == 4
     if images.ndim == 4:
         images = images.transpose([0, 3, 1, 2])
+        if images.shape[0] >= 20:
+            images = images[:20]
     else:
         images = images.transpose([2, 0, 1])
     num, img_w, img_h = images.shape[0], images.shape[-1], images.shape[-2]
