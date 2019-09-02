@@ -69,9 +69,9 @@ def training_loop(config: Config):
                 timer.update()
                 fakes_np = sess.run(fakes["generated"])
                 save_image_grid(fakes_np, filename=config.model_dir + '/fakes%06d.png' % step)
-                # [inception_score_eval, fid_eval] = sess.run([inception_score, fid])
-                # print("Time %s, fid %f, inception_score %f ,step %d" %
-                #       (timer.runing_time, fid_eval, inception_score_eval, step))
-                print("Time %s, step %d" % (timer.runing_time, step))
+                [inception_score_eval, fid_eval] = sess.run([inception_score, fid])
+                print("Time %s, fid %f, inception_score %f ,step %d" %
+                      (timer.runing_time, fid_eval, inception_score_eval, step))
+                # print("Time %s, step %d" % (timer.runing_time, step))
             if step % config.save_per_steps == 0:
                 saver.save(sess, save_path=config.model_dir + '/model.ckpt', global_step=step)
